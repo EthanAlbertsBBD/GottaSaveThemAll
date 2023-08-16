@@ -1,18 +1,19 @@
-const swaggerJsDoc = require('swagger-jsdoc');
-const config = require('config');
-const pkg = require('../../../package.json');
+import swaggerJsDoc from 'swagger-jsdoc';
+import config from 'config';
 
-module.exports = () => {
+const baseUrl = config.get('baseUrl');
+
+export default () => {
     const options = {
-        apis: ['./src/modules/**/routes.js'],
+        apis: ['./src/modules/**/routes.ts'],
         definition: {
             openapi: '3.0.0',
             servers: [{
-                url: config.baseUrl,
+                url: baseUrl,
             }],
             info: {
                 title: 'GottaSaveThemAll',
-                version: pkg.version,
+                version: '1.0.0',
                 description: 'GottaSaveThemAll documentation',
             },
             components: {

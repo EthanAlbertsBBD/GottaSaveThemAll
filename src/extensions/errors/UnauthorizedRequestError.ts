@@ -1,7 +1,7 @@
 const GeneralError = require('./GeneralError');
 
-module.exports = class UnauthorizedRequestError extends GeneralError {
-    constructor(message) {
+export default class UnauthorizedRequestError extends GeneralError {
+    constructor(message: string) {
         super(message);
         this.statusCode = 401;
     }

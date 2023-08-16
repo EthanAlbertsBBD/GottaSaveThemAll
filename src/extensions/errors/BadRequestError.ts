@@ -1,7 +1,7 @@
 const GeneralError = require('./GeneralError');
 
-module.exports = class BadRequestError extends GeneralError {
-    constructor(message) {
+export default class BadRequestError extends GeneralError {
+    constructor(message: string) {
         super(message);
         this.statusCode = 400;
     }

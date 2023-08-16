@@ -1,4 +1,7 @@
-const pokemonRouter = require('express').Router();
+import { Router } from 'express';
+
+const pokemonRouter = Router();
+
 
 /**
  * @swagger
@@ -46,4 +49,4 @@ pokemonRouter.get('/', (req, res, next) => {
   return res.status(200).json([])
 });
 
-module.exports = pokemonRouter;
+export default pokemonRouter

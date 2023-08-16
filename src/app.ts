@@ -1,18 +1,18 @@
-const express = require("express");
-const path = require("path");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const config = require("config");
+import express from 'express';
+import path from "path";
+import cors from "cors";
+import bodyParser from "body-parser";
+import config from "config";
 
-const {
+import {
   pokemonRouter,
-} = require('./modules/routes')
-const swaggerRouter = require('./extensions/swagger/router');
+} from './modules/routes'
+import swaggerRouter from './extensions/swagger/router';
 
-const errorHandler = require('./extensions/errors/handler');
+import errorHandler from './extensions/errors/handler';
 
 const app = express();
-const port = config.port;
+const port = config.get('port');
 
 app.use(
   cors({
@@ -32,7 +32,8 @@ app.use("/api/pokemons", pokemonRouter);
 
 app.use(errorHandler);
 
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
+
   console.log(` 
               ____________________________________________
              |                                            |

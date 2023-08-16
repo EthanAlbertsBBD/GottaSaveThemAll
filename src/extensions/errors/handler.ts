@@ -1,7 +1,7 @@
-const GeneralError = require('./GeneralError');
+import GeneralError from './GeneralError';
+import { Request, Response, NextFunction } from "express";
 
-module.exports = (err, req, res, next) => {
-    logger.error(err);
+export default (err: Error, req: Request, res: Response, next: NextFunction) => {
     const returnValue = {
         status: 500,
         message: 'Internal server error',
