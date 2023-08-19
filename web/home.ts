@@ -11,7 +11,6 @@ async function exchangeCodeForTokens() {
     if (code) {
         const headers = {
             "Content-Type": "application/x-www-form-urlencoded",
-            // "Authorization": basicAuthorization,
         };
     
         const data = new URLSearchParams();
