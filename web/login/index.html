@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page</title>
+<script>
+  function redirectToURL(url) {
+    window.location.href = url;
+  }
+
+  const login = 'https://gotta-save-them-all.auth.us-east-1.amazoncognito.com/login?response_type=code&client_id=351ntcgkgo32jeh3vqrbblb6i0&redirect_uri=http://localhost:8080/';
+  const signup = 'https://gotta-save-them-all.auth.us-east-1.amazoncognito.com/signup?response_type=code&client_id=351ntcgkgo32jeh3vqrbblb6i0&redirect_uri=http://localhost:8080/';
+</script>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+  }
+
+  
+  .circle {
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
+    background: linear-gradient( 180deg, red, red 49%, black 48%, black 52%, white 51% ); 
+    border-radius: 50%;
+    overflow: visible;
+    position: relative;
+  }
+
+  .inner-circle { /* Add this */
+    width: min(10vw, 10vh);
+    height: min(10vw, 10vh);
+    background-color: white; /* Set your desired color */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: min(1.5vw, 1.5vh) solid black;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  .login {
+    position: relative;
+    text-align: center;
+    top: 20%;
+  }
+
+  .signup {
+    position: relative;
+    text-align: center;
+    top: 60%;
+  }
+
+  .button {
+    font-size: max(2vw, 1.5rem);
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .pokemon-heading {
+    position:absolute;
+    top: 0%;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 6vw;
+    background-image: linear-gradient(to right, #fdca40, #fcee21);
+    -webkit-background-clip: text;
+    color: transparent;
+    letter-spacing: 2px;
+  }
+
+</style>
+</head>
+<body>
+  <h1 class="pokemon-heading">GottaSaveThemAll</h1>
+  <nav class="circle">
+    <nav class="inner-circle"></nav>
+    <article class="login">
+      <button class="button" onclick="redirectToURL(login)">Login</button>
+    </article>
+    
+    <article class="signup">
+      <button class="button" onclick="redirectToURL(signup)">Sign Up</button>
+    </article>
+  </nav>
+</body>
+</html>
