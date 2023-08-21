@@ -1,5 +1,5 @@
 import { Router } from 'express';
-
+import { getS3Object } from '../../extensions/s3'
 const pokemonRouter = Router();
 
 
@@ -9,27 +9,6 @@ const pokemonRouter = Router();
  *  schemas:
  *   Pokemon:
  *    type: object
- *    properties:
- *     name:
- *      type: string
- *     type1:
- *      type: string
- *     type2:
- *      type: string
- *     total:
- *      type: integer
- *     hp:
- *      type: integer
- *     attack:
- *      type: integer
- *     defense:
- *      type: integer
- *     spAtk:
- *      type: integer
- *     spDef:
- *      type: integer
- *     speed:
- *      type: integer
  * 
  * /api/pokemons:
  *  get:
@@ -46,7 +25,9 @@ const pokemonRouter = Router();
  *         $ref: '#/components/schemas/Pokemon'       
 */
 pokemonRouter.get('/', (req, res, next) => {
-  return res.status(200).json([])
+  getS3Object('pokemon-gsta', 'pokemon/pokemon.json').then((result) => {
+    return res.status(200).json(result)
+  })
 });
 
 export default pokemonRouter
