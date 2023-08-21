@@ -1,7 +1,11 @@
 import { Router } from 'express';
 import { getS3Object } from '../../extensions/s3'
-const pokemonRouter = Router();
+import {
+  generateRadomPokemon
+} from './pokemons.service';
+import { Pokemon } from '../../models';
 
+const pokemonRouter = Router();
 
 /**
  * @swagger
@@ -9,6 +13,33 @@ const pokemonRouter = Router();
  *  schemas:
  *   Pokemon:
  *    type: object
+ *    properties:
+ *     name:
+ *      type: string
+ *     abilities:
+ *      type: string
+ *     hp:
+ *      type: string
+ *     attack:
+ *      type: string
+ *     defense:
+ *      type: string
+ *     speedAttack:
+ *      type: string
+ *     speedDefense:
+ *      type: string
+ *     speed:
+ *      type: string
+ *     id:
+ *      type: integer
+ *     types:
+ *      type: array
+ *      items:
+ *        type: string
+ *     artImage:
+ *      type: string
+ *     iconImage:
+ *      type: string
  * 
  * /api/pokemons:
  *  get:
@@ -28,6 +59,57 @@ pokemonRouter.get('/', (req, res, next) => {
   getS3Object('pokemon-gsta', 'pokemon/pokemon.json').then((result) => {
     return res.status(200).json(result)
   })
+});
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *   Pokemon:
+ *    type: object
+ *    properties:
+ *     name:
+ *      type: string
+ *     abilities:
+ *      type: string
+ *     hp:
+ *      type: string
+ *     attack:
+ *      type: string
+ *     defense:
+ *      type: string
+ *     speedAttack:
+ *      type: string
+ *     speedDefense:
+ *      type: string
+ *     speed:
+ *      type: string
+ *     id:
+ *      type: integer
+ *     types:
+ *      type: array
+ *      items:
+ *        type: string
+ *     artImage:
+ *      type: string
+ *     iconImage:
+ *      type: string
+ * 
+ * /api/pokemons/random:
+ *  get:
+ *   tags:
+ *    - Pokemons
+ *   summary: Get a Random Pokemon
+ *   responses:
+ *    200:
+ *     content:
+ *      application/json:
+ *       schema:
+ *        $ref: '#/components/schemas/Pokemon'       
+*/
+pokemonRouter.get('/random', async (req, res, next) => {
+    const randomPokemon: Pokemon = await generateRadomPokemon('demo');
+    return res.status(200).json(randomPokemon)
 });
 
 export default pokemonRouter

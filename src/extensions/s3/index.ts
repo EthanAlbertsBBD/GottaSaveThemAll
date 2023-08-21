@@ -1,4 +1,4 @@
-import { S3Client, GetObjectCommand } from '@aws-sdk/client-s3';
+import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { Readable } from 'stream';
 import config from 'config';
 
@@ -11,7 +11,7 @@ const streamToString = (stream): Promise<string> => new Promise((resolve, reject
   stream.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
 });
 
-export const getS3Object =  (bucket:string, key:string) => {
+export const getS3Object = (bucket:string, key:string) => {
   const params = {
     Bucket: bucket,
     Key: key
@@ -24,4 +24,15 @@ export const getS3Object =  (bucket:string, key:string) => {
         return JSON.parse(result);
       });
     });
+}
+
+export const saveS3Object = (bucket:string, key:string, data:any) => {
+  const params = {
+    Bucket: bucket,
+    Key: key,
+    Body: JSON.stringify(data),
+    ContentType: 'application/json',
+  };
+  const command = new PutObjectCommand(params);
+  return client.send(command);
 }
