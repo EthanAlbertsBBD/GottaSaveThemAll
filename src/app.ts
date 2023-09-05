@@ -10,6 +10,7 @@ import {
 import swaggerRouter from './extensions/swagger/router';
 
 import errorHandler from './extensions/errors/handler';
+import auth from './middleware/authentication';
 
 const app = express();
 const port = config.get('port');
@@ -24,6 +25,7 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(auth);
 
 app.use("/", express.static(path.join("web")));
 
