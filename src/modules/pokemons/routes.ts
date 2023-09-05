@@ -46,7 +46,7 @@ const pokemonRouter = Router();
  *         $ref: '#/components/schemas/Pokemon'       
 */
 pokemonRouter.get('/', (req, res, next) => {
-  return res.status(200).json([])
+  return res.status(200).json(['Hello'])
 });
 
 export default pokemonRouter
