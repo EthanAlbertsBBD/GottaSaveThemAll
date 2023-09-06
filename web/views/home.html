@@ -16,18 +16,24 @@
         <ul>
           <li><a href="../views/home.html">Catch</a></li>
           <li><a href="../views/collection.html">Collection</a></li>
-          <li><a href="../views/collection.html">Logout</a></li>
+          <li><a href="../login/index.html">Logout</a></li>
         </ul>
       </nav>
     </header>
-    <div class="pokemon-card">
-      <div class="pokemon-hp">HP 50</div>
+    <div id="pokemonCard" class="pokemon-card">
+      <div class="pokemon-hp">HP:</div>
+      <img class="pokemon-art" src="../assets/bulb.png" />
+      <div class="pokemon-type">Type: {{pokemonType}}</div>
+      <div class="pokemon-attack">Attack: {{pokemonAttack}}</div>
+      <div class="pokemon-defense">Defense: {{pokemonDefense}}</div>
+      <div class="pokemon-speed">Speed: {{pokemonSpeed}}</div>
     </div>
     <div class="center-on-page">
       <div class="pokeball"></div>
     </div>
-    <button class="capture-pokemon-button" type="button">
+    <button class="capture-pokemon-button" type="button" onclick="getPokemon()">
       Capture Pokemon
     </button>
   </body>
+  <script src="../scripts/pokemon.js" type="application/javascript"></script>
 </html>

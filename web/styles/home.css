@@ -83,3 +83,52 @@
   font-size: 24px;
   color: white;
 }
+
+.pokemon-art {
+  height: 250px;
+  width: 250px;
+}
+
+.pokemon-attack {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--poke-ball-red);
+  width: 250px;
+  color: white;
+}
+
+.pokemon-defense {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: orange;
+  width: 275px;
+  color: white;
+}
+
+.pokemon-speed {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: navy;
+  width: 250px;
+  color: white;
+}
+
+.pokemon-type {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  width: 275px;
+  color: white;
+}
