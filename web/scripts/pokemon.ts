@@ -31,7 +31,7 @@ async function getPokemon() {
   const headers = {
     Authorization: 'Bearer ' + token,
   };
-  fetch(`http://localhost:8080/api/pokemons/random`, {
+  fetch(`https://qf78x42ctm.eu-west-1.awsapprunner.com/api/pokemons/random`, {
     headers: headers,
   })
     .then((resp) => resp.json())
