@@ -16,8 +16,9 @@ function showCard() {
 }
 
 async function getPokemon() {
+  showPokemonCard = false;
+  showCard();
   const token = localStorage.getItem('gottaSaveThemAllToken');
-
   const headers = {
     Authorization: 'Bearer ' + token,
   };
@@ -34,7 +35,7 @@ async function getPokemon() {
     });
 }
 
-function setUpPokemonCard(pokemonData) {
+function setUpPokemonCard(pokemonData: JSON) {
   const pokemonHp = document.getElementById('pokemonHp');
   const pokemonType = document.getElementById('pokemonType');
   const pokemonAttack = document.getElementById('pokemonAttack');
