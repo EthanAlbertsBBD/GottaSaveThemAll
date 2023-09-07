@@ -1,3 +1,4 @@
+const imageUrl = 'https://d1kldfsghb88ai.cloudfront.net/';
 let showPokemonCard = false;
 
 showCard();
@@ -15,26 +16,46 @@ function showCard() {
 }
 
 async function getPokemon() {
+  showPokemonCard = false;
+  showCard();
   const token = localStorage.getItem('gottaSaveThemAllToken');
-  const pokemonData = {
-    id: 683,
-    name: 'Aromatisse',
-    abilities: 'HealerAroma Veil',
-    hp: '101',
-    attack: '72',
-    defense: '72',
-    speedAttack: '99',
-    speedDefense: '89',
-    speed: '29',
-    types: ['fairy'],
-    artImage: 'images/art/683.png',
-    iconImage: 'images/icons/683.png',
+  const headers = {
+    Authorization: 'Bearer ' + token,
   };
-
-  if (!showPokemonCard) {
-    showPokemonCard = true;
-    showCard();
-  }
+  fetch(`http://localhost:8080/api/pokemons/random`, {
+    headers: headers,
+  })
+    .then((resp) => resp.json())
+    .then((data) => {
+      setUpPokemonCard(data);
+      if (!showPokemonCard) {
+        showPokemonCard = true;
+        showCard();
+      }
+    });
 }
 
-function setUpPokemonCard() {}
+function setUpPokemonCard(pokemonData: JSON) {
+  const pokemonHp = document.getElementById('pokemonHp');
+  const pokemonType = document.getElementById('pokemonType');
+  const pokemonAttack = document.getElementById('pokemonAttack');
+  const pokemonDefense = document.getElementById('pokemonDefense');
+  const pokemonSpeed = document.getElementById('pokemonSpeed');
+  const pokemonArt = document.getElementById('pokemonArt');
+
+  if (
+    pokemonHp &&
+    pokemonType &&
+    pokemonAttack &&
+    pokemonDefense &&
+    pokemonSpeed &&
+    pokemonArt
+  ) {
+    pokemonArt.src = imageUrl + pokemonData['artImage'];
+    pokemonHp.textContent = `HP: ${pokemonData['hp']}`;
+    pokemonType.textContent = `Type: ${pokemonData['types']}`;
+    pokemonAttack.textContent = `Attack: ${pokemonData['attack']}`;
+    pokemonDefense.textContent = `Defense: ${pokemonData['defense']}`;
+    pokemonSpeed.textContent = `Speed: ${pokemonData['speed']}`;
+  }
+}
