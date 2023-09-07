@@ -67,13 +67,11 @@ async function getCollection() {
     .then((resp) => resp.json())
     .then((data) => 
       data.forEach((card) => {
-        console.log("HERE", card)
         const copy: HTMLElement = (reference_card.cloneNode(true))
         copy.id = ""
         Array.from(copy.children).forEach((child: Element) => {
           if (child.classList.contains(card_items_reference.art)){
-            child.textContent = card.artImage;
-            console.log("Art")
+            child.src = imageUrl + card.artImage;
           }
           if (child.classList.contains(card_items_reference.hp)){
             child.textContent = "HP: " + card.hp;
