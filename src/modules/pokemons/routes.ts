@@ -109,13 +109,13 @@ pokemonRouter.get('/', (req, res, next) => {
  *        $ref: '#/components/schemas/Pokemon'       
 */
 pokemonRouter.get('/random', async (req, res, next) => {
-    const randomPokemon: Pokemon = await generateRadomPokemon('demo');
+    const randomPokemon: Pokemon = await generateRadomPokemon(res.locals.username);
     return res.status(200).json(randomPokemon)
 });
 
 
 pokemonRouter.get('/collection', async (req, res, next) => {
-  const collection: Pokemon[] = await getUserCollection('demo');
+  const collection: Pokemon[] = await getUserCollection(res.locals.username);
   return res.status(200).json(collection)
 });
 
