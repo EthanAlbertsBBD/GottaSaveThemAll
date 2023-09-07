@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Gotta Save Em All</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../assets/Pokeball.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../styles/collection.css" />
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="../scripts/pokemon.ts" type="text/babel" defer></script>
+  </head>
+  <body>
+    <header>
+      <img class="logo" src="../assets/Logo.png" />
+      <nav>
+        <ul>
+          <li><a href="../home/index.html">Catch</a></li>
+          <li><a href="../collection/index.html">Collection</a></li>
+          <li><a href="../login/index.html">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+    <ul id="collection">
+      <li id="pokemonCard" class="pokemon-card">
+        <div class="pokemon-hp">HP:</div>
+        <img class="pokemon-art" src="../assets/bulb.png" />
+        <div class="pokemon-type">Type</div>
+        <div class="pokemon-attack">Attack</div>
+        <div class="pokemon-defense">Defense</div>
+        <div class="pokemon-speed">Speed</div>
+      </li>
+    </ul>
+
+    <button class="capture-pokemon-button" type="button" onclick="getCollection()">
+      Pokemon Collection
+    </button>
+  </body>
+</html>
