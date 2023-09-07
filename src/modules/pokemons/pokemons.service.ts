@@ -29,6 +29,11 @@ const getRandomPokemonIndex = (collection: Pokemon[], pokemons: Pokemon[]) => {
 
 }
 
+const getUserCollection = async (userName) => {
+  const collection: Pokemon[] = await getS3Object('pokemon-gsta', `users/${userName}/collection.json`);
+  return collection;
+}
+
 const getPokemons = async (userName: string) => {
   const pokemons: Pokemon[] = await getS3Object('pokemon-gsta', 'pokemon/pokemon.json');
   const collection: Pokemon[] = await getS3Object('pokemon-gsta', `users/${userName}/collection.json`);
@@ -48,5 +53,6 @@ const generateRadomPokemon = async (userName: string) => {
 }
 
 export {
-  generateRadomPokemon
+  generateRadomPokemon,
+  getUserCollection
 }

@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { getS3Object } from '../../extensions/s3'
 import {
-  generateRadomPokemon
+  generateRadomPokemon,
+  getUserCollection
 } from './pokemons.service';
 import { Pokemon } from '../../models';
 
@@ -109,8 +110,13 @@ pokemonRouter.get('/', (req, res, next) => {
  *        $ref: '#/components/schemas/Pokemon'       
 */
 pokemonRouter.get('/random', async (req, res, next) => {
-    const randomPokemon: Pokemon = await generateRadomPokemon('demo');
+    const randomPokemon: Pokemon = await generateRadomPokemon(res.locals.username);
     return res.status(200).json(randomPokemon)
+});
+
+pokemonRouter.get('/collection', async (req, res, next) => {
+  const colledction: Pokemon[] = await getUserCollection(res.locals.username);
+  return res.status(200).json(colledction)
 });
 
 export default pokemonRouter
