@@ -61,7 +61,7 @@ async function getCollection() {
   const headers = {
     Authorization: 'Bearer ' + token,
   };
-  fetch(`http://localhost:8080/api/pokemons/collection`, {
+  fetch(`https://qf78x42ctm.eu-west-1.awsapprunner.com/api/pokemons/collection`, {
     headers: headers,
   })
     .then((resp) => resp.json())
