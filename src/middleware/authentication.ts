@@ -40,7 +40,7 @@ function auth(req, res, next) {
         jwk = JSON.parse(jwk.toString());
         const pem = jwkToPem(jwk.keys[1]);
         const decode = jwt.verify(token, pem);
-        console.log(decode.username)
+        res.locals.username = decode.username
     } catch (error) {
         console.log(error)
         return res.status(401).json([])
