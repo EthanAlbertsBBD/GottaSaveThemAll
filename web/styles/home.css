@@ -1,0 +1,134 @@
+@import url(./main.css);
+
+.center-on-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pokeball {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  background-image: linear-gradient(var(--poke-ball-red) 125px, white 125px);
+  position: relative;
+  animation: pokeball-animation 2.5s infinite;
+}
+
+@keyframes pokeball-animation {
+  50% {
+    transform: scale(0.6);
+  }
+}
+
+.pokeball:before {
+  position: absolute;
+  content: '';
+  height: 25px;
+  width: 250px;
+  background-color: black;
+  top: 112.5px;
+}
+
+.pokeball:after {
+  position: absolute;
+  content: '';
+  height: 90px;
+  width: 90px;
+  background-image: radial-gradient(
+    white 0px,
+    white,
+    10px,
+    black 10px,
+    black 15px,
+    white,
+    15px,
+    white 30px,
+    black 30px
+  );
+  border-radius: 50%;
+  top: 80px;
+  left: 80px;
+}
+
+.capture-pokemon-button {
+  position: absolute;
+  font-size: 24px;
+  font-family: 'Pokemon Solid', sans-serif;
+  padding: 0.5em 1em;
+  margin: 1em;
+  border-radius: 2em;
+  border: none;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  bottom: 175px;
+}
+
+.pokemon-card {
+  position: absolute;
+  width: 350px;
+  height: 500px;
+  background: linear-gradient(to bottom, var(--poke-ball-red) 50%, white 50%);
+  top: 25%;
+  left: 15%;
+  border-radius: 1em;
+}
+
+.pokemon-hp {
+  position: absolute;
+  font-family: 'Poppins', sans-serif;
+  right: 5px;
+  padding: 5px;
+  font-size: 24px;
+  color: white;
+}
+
+.pokemon-art {
+  height: 250px;
+  width: 250px;
+}
+
+.pokemon-attack {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--poke-ball-red);
+  width: 250px;
+  color: white;
+}
+
+.pokemon-defense {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: orange;
+  width: 275px;
+  color: white;
+}
+
+.pokemon-speed {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: navy;
+  width: 250px;
+  color: white;
+}
+
+.pokemon-type {
+  margin: 10px;
+  bottom: 100px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  width: 275px;
+  color: white;
+}
