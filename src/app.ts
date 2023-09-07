@@ -1,25 +1,23 @@
 import express from 'express';
-import path from "path";
-import cors from "cors";
-import bodyParser from "body-parser";
-import config from "config";
+import path from 'path';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import config from 'config';
 
-import {
-  pokemonRouter,
-} from './modules/routes'
+import { pokemonRouter } from './modules/routes';
 import swaggerRouter from './extensions/swagger/router';
 
 import errorHandler from './extensions/errors/handler';
 import auth from './middleware/authentication';
 
 const app = express();
-const port = config.get('port');
+const port = config.get('port') as number;
 
 app.use(
   cors({
     credentials: true,
-    origin: "*",
-    methods: ["GET", "POST", "PUT"],
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT'],
   })
 );
 
@@ -27,17 +25,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(auth);
 
-app.use("/", express.static(path.join("web")));
+app.use('/', express.static(path.join('web')));
 
 app.use('/api/swagger-ui', swaggerRouter);
-app.use("/api/pokemons", pokemonRouter);
+app.use('/api/pokemons', pokemonRouter);
 
 app.use(errorHandler);
 
-app.listen(port, () => {
-
+app.listen(port, '0.0.0.0', () => {
   console.log(` 
-              ____________________________________________
+              ____________________________________________  
              |                                            |
              | Is it possible...? Can we save 'em all?    |
              | Wait.. that doesn't sound right?           |

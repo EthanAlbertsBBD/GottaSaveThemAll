@@ -8,13 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="../assets/Pokeball.ico" type="image/x-icon" />
     <link rel="stylesheet" href="../styles/home.css" />
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="../scripts/pokemon.ts" type="text/babel" defer></script>
   </head>
   <body>
     <header>
       <img class="logo" src="../assets/Logo.png" />
       <nav>
         <ul>
-          <li><a href="../views/home.html">Catch</a></li>
+          <li><a href="../home/index.html">Catch</a></li>
           <li><a href="../views/collection.html">Collection</a></li>
           <li><a href="../login/index.html">Logout</a></li>
         </ul>
@@ -23,10 +25,10 @@
     <div id="pokemonCard" class="pokemon-card">
       <div class="pokemon-hp">HP:</div>
       <img class="pokemon-art" src="../assets/bulb.png" />
-      <div class="pokemon-type">Type: {{pokemonType}}</div>
-      <div class="pokemon-attack">Attack: {{pokemonAttack}}</div>
-      <div class="pokemon-defense">Defense: {{pokemonDefense}}</div>
-      <div class="pokemon-speed">Speed: {{pokemonSpeed}}</div>
+      <div class="pokemon-type">Type</div>
+      <div class="pokemon-attack">Attack</div>
+      <div class="pokemon-defense">Defense</div>
+      <div class="pokemon-speed">Speed</div>
     </div>
     <div class="center-on-page">
       <div class="pokeball"></div>
@@ -35,5 +37,4 @@
       Capture Pokemon
     </button>
   </body>
-  <script src="../scripts/pokemon.js" type="application/javascript"></script>
 </html>
