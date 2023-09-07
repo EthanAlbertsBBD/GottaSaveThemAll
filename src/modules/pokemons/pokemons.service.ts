@@ -47,6 +47,12 @@ const generateRadomPokemon = async (userName: string) => {
   return pokemon;
 }
 
+const getUserCollection = async (userName: string) => {
+  const { ignored, collection } = await getPokemons(userName);
+  return collection;
+}
+
 export {
-  generateRadomPokemon
+  generateRadomPokemon,
+  getUserCollection
 }
