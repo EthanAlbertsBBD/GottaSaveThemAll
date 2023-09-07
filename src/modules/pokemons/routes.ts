@@ -56,6 +56,7 @@ const pokemonRouter = Router();
  *         $ref: '#/components/schemas/Pokemon'       
 */
 pokemonRouter.get('/', (req, res, next) => {
+  console.log(res.locals.username)
   getS3Object('pokemon-gsta', 'pokemon/pokemon.json').then((result) => {
     return res.status(200).json(result)
   })
