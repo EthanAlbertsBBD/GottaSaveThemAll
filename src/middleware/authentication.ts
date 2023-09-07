@@ -1,7 +1,9 @@
-import fs from 'fs';
+// import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import jwkToPem from 'jwk-to-pem';
-import path from 'path';
+// import path from 'path';
+import jwk from './jwks.json';
+
 
 function getUserInfoExample(token) {
     const userInfoHeaders = {
@@ -36,8 +38,6 @@ function auth(req, res, next) {
     const token = authHeader.split(' ')[1];
   
     try {
-        var jwk = fs.readFileSync(path.resolve(__dirname, "jwks.json"))
-        jwk = JSON.parse(jwk.toString());
         const pem = jwkToPem(jwk.keys[1]);
         const decode = jwt.verify(token, pem);
         res.locals.username = decode.username
