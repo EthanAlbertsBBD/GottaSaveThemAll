@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import config from 'config';
+import config from '../config/default.json';
 
 import { pokemonRouter } from './modules/routes';
 import swaggerRouter from './extensions/swagger/router';
@@ -11,7 +11,7 @@ import errorHandler from './extensions/errors/handler';
 import auth from './middleware/authentication';
 
 const app = express();
-const port = config.get('port') as number;
+const port = config.port as number;
 
 app.use(
   cors({

@@ -1,7 +1,7 @@
 import swaggerJsDoc from 'swagger-jsdoc';
-import config from 'config';
+import config from '../../../config/default.json';
 
-const baseUrl = config.get('baseUrl');
+const baseUrl = config.baseUrl;
 
 export default () => {
     const options = {
