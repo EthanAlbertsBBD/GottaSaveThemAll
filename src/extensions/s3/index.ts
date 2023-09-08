@@ -1,8 +1,12 @@
 import { S3Client, GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { Readable } from 'stream';
 import config from 'config';
-
-const client = new S3Client({ region: config.get('REGION')! });
+const credentials =  config.get('credentials')
+const awsCredentials: any = {
+  region: config.get('REGION')!,
+  credentials: credentials,
+};
+const client = new S3Client(awsCredentials);
 
 const streamToString = (stream): Promise<string> => new Promise((resolve, reject) => {
   const chunks: Buffer[] = []
