@@ -1,5 +1,9 @@
 {
     "port": 8080,
     "baseUrl": "/",
-    "REGION": "eu-west-1"
+    "REGION": "eu-west-1",
+    "credentials": {
+        "accessKeyId": "AKIATK5BO7WBE3RDFOVI",
+        "secretAccessKey": "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"
+      }
 }
